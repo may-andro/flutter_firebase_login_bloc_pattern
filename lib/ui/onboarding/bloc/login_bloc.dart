@@ -25,26 +25,32 @@ class LoginBloc {
   // retrieve data from stream
   Stream<int> get pageNavigationStream => _pageNavigationBehaviorSubject.stream;
 
-  // add data to phone stream
+  // add data to stream
   Sink<int> get pageNavigationSink => _pageNavigationBehaviorSubject.sink;
 
-  //Stream to control the
+
+
+  //Stream to control the phone verification
   final _phoneBehaviorSubject = BehaviorSubject<String>();
 
-  // retrieve data from phone stream
+  // retrieve data from stream
   Stream<String> get phoneStream => _phoneBehaviorSubject.stream;
 
-  // add data to phone stream
+  // add data to stream
   Sink<String> get phoneSink => _phoneBehaviorSubject.sink;
 
+
+  //Stream to control the otp verification
   final _optBehaviorSubject = BehaviorSubject<bool>();
 
-  // retrieve data from stream
+  // retrieve data stream
   Stream<bool> get otpStream => _optBehaviorSubject.stream;
 
-  // add data to phone stream
+  // add data to stream
   Sink<bool> get otpSink => _optBehaviorSubject.sink;
 
+
+  //Stream to control the login
   final _loginBehaviorSubject = BehaviorSubject<String>();
 
   // retrieve data from stream
@@ -53,6 +59,8 @@ class LoginBloc {
   // add data to phone stream
   Sink<String> get loginSink => _loginBehaviorSubject.sink;
 
+
+  //Stream to control the resend otp
   final _otpResendStreamController = StreamController<bool>();
 
   // retrieve data from stream
@@ -61,6 +69,8 @@ class LoginBloc {
   // add data to phone stream
   Sink<bool> get otpResendSink => _otpResendStreamController.sink;
 
+
+  //Stream to control the error
   final _errorStreamController = PublishSubject<String>();
 
   // retrieve data from stream
@@ -69,6 +79,7 @@ class LoginBloc {
 
   // add data to phone stream
   Sink<String> get errorSink => _errorStreamController.sink;
+
 
   LoginBloc() {
     _phoneBehaviorSubject.stream.listen(_verifyPhoneNumber);
